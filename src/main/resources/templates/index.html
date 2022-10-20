@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-      <meta charset="UTF-8">
-      <title>Job Application Tracker</title>
-      <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
-  </head>
-  <body>
-    <div class="container text-center">
-        <div><h1>Job Application Tracker</h1></div>
-
-        <div class="p-2"><a class="h2" th:href="@{/applications}">View Applications</a></div>
-        <div class="p-2"><a class="h2" th:href="@{/applications/new}">Add Application</a></div>
-        <div class="p-2"><a class="h2" th:href="@{/companies}">View Companies</a></div>
-        <div class="p-2"><a class="h2" th:href="@{/companies/new}">Add Company</a></div>
-        <div class="p-2"><a class="h2" th:href="@{/recruiters}">View Recruiters</a></div>
-        <div class="p-2"><a class="h2" th:href="@{/recruiters/new}">Add Recruiter</a></div>
-    </div>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container text-center">
+    <div><h1>Job Application Tracker</h1></div>
+    <div class="p-2"><a class="h2" th:href="@{/companies}">View Companies</a></div>
+    <div class="p-2"><a class="h2" th:href="@{/companies/new}">Add Company</a></div>
+    <div class="p-2"><a class="h2" th:href="@{/positions}">View Positions</a></div>
+    <div class="p-2"><a class="h2" th:href="@{/positions/new}">Add Position</a></div>
+    <div class="p-2"><a class="h2" th:href="@{/recruiters}">List Recruiters</a></div>
+    <div class="p-2"><a class="h2" th:href="@{/recruiters/new}">Add Recruiter</a></div>
+</div>
+</body>
 </html>

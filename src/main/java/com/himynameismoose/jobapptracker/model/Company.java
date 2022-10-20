@@ -1,17 +1,14 @@
 package com.himynameismoose.jobapptracker.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column(length = 45, nullable = false, unique = true)
     private String name;
-
     @ManyToOne
     @JoinColumn(name = "recruiter_id")
     private Recruiter recruiter;
@@ -56,14 +53,8 @@ public class Company {
         this.recruiter = recruiter;
     }
 
-    @OneToMany(mappedBy = "company")
-    private Collection<Application> application;
-
-    public Collection<Application> getApplication() {
-        return application;
-    }
-
-    public void setApplication(Collection<Application> application) {
-        this.application = application;
+    @Override
+    public String toString() {
+        return name;
     }
 }

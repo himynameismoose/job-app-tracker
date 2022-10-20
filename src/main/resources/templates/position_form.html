@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Position</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container text-center">
+    <div th:if="${position.id == null}"><h1>Add Position</h1></div>
+    <div th:unless="${position.id == null}"><h1>Edit Position</h1></div>
+
+    <form th:action="@{/positions/save}" th:object="${position}" method="post"
+          style="max-width: 600px; margin: 0 auto">
+
+        <input type="hidden" th:field="*{id}" th:value="${position.id}">
+
+        <div class="m-3">
+            <div class="form-group row p-2">
+                <label class="col-form-label col-sm-4">Position: </label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required>
+                </div>
+            </div>
+
+            <div class="form-group row p-2">
+                <label class="col-form-label col-sm-4">Company: </label>
+                <div class="col-sm-8">
+                    <select th:field="*{company}" class="form-control" required>
+                        <th:block th:each="company : ${listCompanies}">
+                            <option th:text="${company.name}" th:value="${company.id}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+
+            <!-- EDIT MODE -->
+            <th:block th:unless="${position.id == null}" th:each="detail, status : ${position.details}">
+                <input type="hidden" name="detailID" th:value="${detail.id}">
+                <div class="form-group row p-2">
+                    <label class="col-form-label col-sm-4">Details #[[${status.count}]]: </label>
+                    <div class="col-sm-4">
+                        <input type="text" name="detailStatus" th:value="${detail.status}" class="form-control" required>
+                    </div>
+                </div>
+            </th:block>
+
+            <th:block th:if="${position.id == null}">
+                <div class="form-group row p-2">
+                    <label class="col-form-label col-sm-4">Details #1: </label>
+                    <div class="col-sm-4">
+                        <input type="text" name="detailStatus" placeholder="Status" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group row p-2">
+                    <label class="col-form-label col-sm-4">Details #2: </label>
+                    <div class="col-sm-4">
+                        <input type="text" name="detailStatus" placeholder="Status" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group row p-2">
+                    <label class="col-form-label col-sm-4">Details #3: </label>
+                    <div class="col-sm-4">
+                        <input type="text" name="detailStatus" placeholder="Status" class="form-control" required>
+                    </div>
+                </div>
+            </th:block>
+
+            <div class="text-center p-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

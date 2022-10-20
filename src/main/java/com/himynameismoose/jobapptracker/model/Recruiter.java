@@ -9,12 +9,10 @@ public class Recruiter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     @Column(length = 45, nullable = false, unique = true)
     private String name;
-
     @OneToMany
-    @JoinColumn(name = "brand_id")
+    @JoinColumn(name = "recruiter_id")
     private List<Company> companies = new ArrayList<>();
 
     public Integer getId() {

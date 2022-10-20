@@ -2,6 +2,7 @@ package com.himynameismoose.jobapptracker.controller;
 
 import com.himynameismoose.jobapptracker.model.Company;
 import com.himynameismoose.jobapptracker.repository.CompanyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,16 +12,13 @@ import java.util.List;
 
 @Controller
 public class CompanyController {
-    private final CompanyRepository companyRepository;
-
-    public CompanyController(CompanyRepository companyRepository) {
-        this.companyRepository = companyRepository;
-    }
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @GetMapping("/companies")
     public String listCompanies(Model model) {
-        List<Company> companyList = companyRepository.findAll();
-        model.addAttribute("companyList", companyList);
+        List<Company> listCompanies = companyRepository.findAll();
+        model.addAttribute("listCompanies", listCompanies);
         return "companies";
     }
 
