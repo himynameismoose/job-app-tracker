@@ -2,17 +2,25 @@ package com.himynameismoose.jobapptracker.model;
 
 import javax.persistence.*;
 
+/**
+ * This class represents the position's company at
+ */
 @Entity
 public class Company {
+    // Fields/Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 45, nullable = false, unique = true)
     private String name;
+
+    // Logically, this does not make sense
+    // I could not get @OneToOne to work
     @ManyToOne
     @JoinColumn(name = "recruiter_id")
     private Recruiter recruiter;
 
+    // Constructors
     public Company() {
     }
 

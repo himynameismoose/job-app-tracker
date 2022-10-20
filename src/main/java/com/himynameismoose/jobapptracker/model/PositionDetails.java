@@ -2,9 +2,13 @@ package com.himynameismoose.jobapptracker.model;
 
 import javax.persistence.*;
 
+/**
+ * These are details attached to the position
+ */
 @Entity
 @Table(name = "position_details")
 public class PositionDetails {
+    // Fields/Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -14,6 +18,7 @@ public class PositionDetails {
     @JoinColumn(name = "position_id")
     private Position position;
 
+    // Constructors
     public PositionDetails(String status, Position position) {
         this.status = status;
         this.position = position;
@@ -29,6 +34,7 @@ public class PositionDetails {
 
     }
 
+    // Getters & Setters
     public Integer getId() {
         return id;
     }

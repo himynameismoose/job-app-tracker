@@ -20,12 +20,13 @@
       </thead>
 
       <tbody>
-      <th:block th:each="company : ${listCompanies}">
-        <tr>
-          <td>[[${company.id}]]</td>
-          <td>[[${company.name}]]</td>
-        </tr>
-      </th:block>
+        <!--   Use Thymeleaf to loop through stored list from controller   -->
+        <th:block th:each="company : ${listCompanies}">
+          <tr>
+            <td>[[${company.id}]]</td>
+            <td>[[${company.name}]]</td>
+          </tr>
+        </th:block>
       </tbody>
     </table>
   </div>

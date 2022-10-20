@@ -4,17 +4,24 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class represents a recruiter of the company
+ */
 @Entity
 public class Recruiter {
+    // Fields/Attributes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(length = 45, nullable = false, unique = true)
     private String name;
+    // one recruiter, one company
+    // I could not get OneToOne to work --temp solution
     @OneToMany
     @JoinColumn(name = "recruiter_id")
     private List<Company> companies = new ArrayList<>();
 
+    // Getters & Setters
     public Integer getId() {
         return id;
     }

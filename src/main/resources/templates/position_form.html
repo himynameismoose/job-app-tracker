@@ -9,7 +9,7 @@
 <div class="container text-center">
     <div th:if="${position.id == null}"><h1>Add Position</h1></div>
     <div th:unless="${position.id == null}"><h1>Edit Position</h1></div>
-
+    <!-- save position -->
     <form th:action="@{/positions/save}" th:object="${position}" method="post"
           style="max-width: 600px; margin: 0 auto">
 
@@ -22,7 +22,7 @@
                     <input type="text" th:field="*{name}" class="form-control" required>
                 </div>
             </div>
-
+            <!--     Select from a list of companies       -->
             <div class="form-group row p-2">
                 <label class="col-form-label col-sm-4">Company: </label>
                 <div class="col-sm-8">
@@ -36,15 +36,17 @@
 
             <!-- EDIT MODE -->
             <th:block th:unless="${position.id == null}" th:each="detail, status : ${position.details}">
+                <!--       Don't share detail id         -->
                 <input type="hidden" name="detailID" th:value="${detail.id}">
                 <div class="form-group row p-2">
+                    <!--         Prepopulate the            -->
                     <label class="col-form-label col-sm-4">Details #[[${status.count}]]: </label>
                     <div class="col-sm-4">
                         <input type="text" name="detailStatus" th:value="${detail.status}" class="form-control" required>
                     </div>
                 </div>
             </th:block>
-
+            <!--     Handles the new form       -->
             <th:block th:if="${position.id == null}">
                 <div class="form-group row p-2">
                     <label class="col-form-label col-sm-4">Details #1: </label>

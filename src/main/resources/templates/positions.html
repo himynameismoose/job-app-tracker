@@ -23,19 +23,21 @@
             </thead>
 
             <tbody>
-            <th:block th:each="position: ${listPositions}">
-                <tr>
-                    <td>[[${position.id}]]</td>
-                    <td>[[${position.name}]]</td>
-                    <td>[[${position.company.name}]]</td>
-                    <td>[[${position.details}]]</td>
-                    <td>
-                        <a th:href="@{'/positions/edit/' + ${position.id}}">Edit</a>
-                        &nbsp;
-                        <a th:href="@{'/positions/delete/' + ${position.id}}">Delete</a>
-                    </td>
-                </tr>
-            </th:block>
+                <!--      Loop through list of positions from controller      -->
+                <th:block th:each="position: ${listPositions}">
+                    <tr>
+                        <td>[[${position.id}]]</td>
+                        <td>[[${position.name}]]</td>
+                        <td>[[${position.company.name}]]</td>
+                        <td>[[${position.details}]]</td>
+                        <td>
+                            <!--            Button actions                -->
+                            <a th:href="@{'/positions/edit/' + ${position.id}}">Edit</a>
+                            &nbsp;
+                            <a th:href="@{'/positions/delete/' + ${position.id}}">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
     </div>

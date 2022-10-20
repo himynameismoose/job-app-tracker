@@ -7,12 +7,13 @@
 </head>
 <body>
 <div class="container text-center">
+  <!-- Switch h1, adjust for action type -->
   <div th:if="${recruiter.id == null}"><h1>Add Recruiter</h1></div>
   <div th:unless="${recruiter.id == null}"><h1>Edit Recruiter</h1></div>
 
   <form th:action="@{/recruiters/save}" th:object="${recruiter}" method="post"
         style="max-width: 600px; margin: 0 auto">
-
+    <!--  Determine id values   -->
     <input type="hidden" th:field="*{id}" th:value="${recruiter.id}">
 
     <div class="m-3">
@@ -24,8 +25,10 @@
       </div>
 
       <div class="form-group row p-2">
+        <!--    Choose from company    -->
         <label class="col-form-label col-sm-4">Choose company: </label>
         <div class="col-sm-8">
+          <!--     Display list of companies from controller found by jpa     -->
           <select th:field="*{companies}" class="form-control" multiple="multiple" required>
             <th:block th:each="company : ${listCompanies}">
               <option th:text="${company.name}" th:value="${company.id}"></option>
