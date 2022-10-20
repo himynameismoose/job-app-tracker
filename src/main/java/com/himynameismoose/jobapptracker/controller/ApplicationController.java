@@ -22,7 +22,7 @@ public class ApplicationController {
         this.companyRepository = companyRepository;
     }
 
-    @GetMapping("/application/new")
+    @GetMapping("/applications/new")
     public String showNewApplicationForm(Model model) {
         List<Company> companyList = companyRepository.findAll();
         model.addAttribute("application", new Application());
@@ -30,7 +30,7 @@ public class ApplicationController {
         return "application_form";
     }
 
-    @PostMapping("/application/save")
+    @PostMapping("/applications/save")
     public String saveApplication(Application application) {
         applicationRepository.save(application);
         return "redirect:/applications";
